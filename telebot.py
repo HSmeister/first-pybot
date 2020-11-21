@@ -38,6 +38,7 @@ async def play(event):
                 else:
                     await event.respond('Насколько я знаю, такого населённого пункта не существует в России. Попробуй еще раз😉')
                     raise events.StopPropagation
+raise events.StopPropagation
 
 
 def getword(letter, used_lis):
