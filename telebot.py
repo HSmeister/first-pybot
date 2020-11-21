@@ -30,6 +30,7 @@ async def play(event):
             message = event.raw_text
             with open('city.txt') as same_file:
                 if message in same_file:
+                    await event.respond('hi')
                     if message not in lis:
                         let = message[len(message)-1]
                         await event.respond(getword(let, lis))
