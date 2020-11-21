@@ -12,6 +12,7 @@ API_HASH = os.getenv('API_HASH')
 
 bot = TelegramClient('bot', API_ID, API_HASH).start(bot_token=BOT_TOKEN)
 file = open('city.txt')
+file1 = open('city.txt')
 
 
 @bot.on(events.NewMessage(pattern='/start'))
@@ -28,7 +29,7 @@ async def start(event):
         @bot.on(events.NewMessage)
         async def game(event):
             message = event.text
-            if message in file:
+            if message in file1:
                 if not message in lis:
                     let = message[len(message)-1]
                     await event.respond(getword(let))
