@@ -45,6 +45,7 @@ def getword(letter, used_lis):
     file = open('city.txt')
     for line in file:
         print('before first if')
+        print(letter)
         if line[0] == letter:
             print('passed first if')
             if used_lis.count(line) == 0:
