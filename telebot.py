@@ -41,8 +41,11 @@ async def play(event):
 
 def getword(letter, used_lis):
     for line in file:
+        print('before first if')
         if line[0] == letter:
+            print('passed first if')
             if used_lis.count(line) == 0:
+                print('passed second if')
                 return line
                 break
 
