@@ -28,14 +28,14 @@ async def start(event):
         @bot.on(events.NewMessage)
         async def game(event):
             message = event.text
-            with open('city.txt') as file1
-            if message in file1:
-                if not message in lis:
-                    let = message[len(message)-1]
-                    await event.respond(getword(let))
-            else:
-                await event.respond('Насколько я знаю, такого населённого пункта не существует в России. Попробуй еще раз😉')
-                raise events.StopPropagation
+            with open('city.txt') as same_file:
+                if message in same_file:
+                    if not message in lis:
+                        let = message[len(message)-1]
+                        await event.respond(getword(let))
+                else:
+                    await event.respond('Насколько я знаю, такого населённого пункта не существует в России. Попробуй еще раз😉')
+                    raise events.StopPropagation
 
 def getword(letter):
     for line in file:
