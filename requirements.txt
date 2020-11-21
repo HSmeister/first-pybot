@@ -1,3 +1,2 @@
 Telethon==1.17.5
-dotenv
-os
+python-dotenv==0.15.0
