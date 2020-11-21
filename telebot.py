@@ -22,7 +22,7 @@ async def start(event):
 
 
 @bot.on(events.NewMessage(pattern='/play'))
-async def start(event):
+async def play(event):
         await event.respond('Начнём! Ты первый😋')
         lis = list()
         @bot.on(events.NewMessage)
@@ -30,21 +30,19 @@ async def start(event):
             message = event.text
             with open('city.txt') as same_file:
                 if message in same_file:
-                    if not message in lis:
+                    if message not in lis:
                         let = message[len(message)-1]
-                        await event.respond(getword(let))
+                        await event.respond(getword(let, lis))
                 else:
                     await event.respond('Насколько я знаю, такого населённого пункта не существует в России. Попробуй еще раз😉')
                     raise events.StopPropagation
 
-def getword(letter):
+def getword(letter, used_lis):
     for line in file:
         if line[0] == letter:
-            if line not in lis:
+            if line not in used_lis:
                 return line
                 break
-
-
 
 
 def main():
