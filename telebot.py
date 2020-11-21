@@ -42,7 +42,7 @@ async def play(event):
 def getword(letter, used_lis):
     for line in file:
         if line[0] == letter:
-            if line not in used_lis:
+            if used_lis.count(line) == 0:
                 return line
                 break
 
