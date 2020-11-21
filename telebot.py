@@ -32,6 +32,7 @@ async def play(event):
                 text = same_file.read()
                 if text.count(message) > 0:
                     if lis.count(message) == 0:
+                        await event.respond('hi')
                         let = message[len(message)-1]
                         await event.respond(getword(let, lis))
                 else:
