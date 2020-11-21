@@ -24,15 +24,14 @@ async def start(event):
 @bot.on(events.NewMessage(pattern='/play'))
 async def play(event):
         await event.respond('Начнём! Ты первый😋')
-        lis = list()
         @bot.on(events.NewMessage)
         async def game(event):
+            lis = list()
             message = event.raw_text
             with open('city.txt') as same_file:
                 text = same_file.read()
                 if text.count(message) > 0:
-                    await event.respond('hi')
-                    if message not in lis:
+                    if lis.count(message) == 0:
                         let = message[len(message)-1]
                         await event.respond(getword(let, lis))
                 else:
