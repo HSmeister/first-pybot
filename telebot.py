@@ -40,9 +40,9 @@ async def play(event):
                     await event.respond('Насколько я знаю, такого населённого пункта не существует в России. Попробуй еще раз😉')
                     raise events.StopPropagation
 
+
 def getword(letter, used_lis):
     file = open('city.txt')
-    await event.respond('sucsess')
     for line in file:
         print('before first if')
         if line[0] == letter:
