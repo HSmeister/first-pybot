@@ -27,7 +27,7 @@ async def play(event):
         lis = list()
         @bot.on(events.NewMessage)
         async def game(event):
-            message = event.text
+            message = event.raw_text
             with open('city.txt') as same_file:
                 if message in same_file:
                     if message not in lis:
