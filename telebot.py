@@ -32,7 +32,6 @@ async def play(event):
                 text = same_file.read()
                 if text.count(message) > 0:
                     if lis.count(message) == 0:
-                        await event.respond('hi')
                         let = message[len(message)-1]
                         answer = getword(let, lis)
                         await event.respond(answer)
@@ -44,12 +43,8 @@ async def play(event):
 def getword(letter, used_lis):
     file = open('city.txt')
     for line in file:
-        print('before first if')
-        print(letter)
-        if line[0] == letter:
-            print('passed first if')
+        if line[0] == letter.upper():
             if used_lis.count(line) == 0:
-                print('passed second if')
                 return line
                 break
     file.close()
