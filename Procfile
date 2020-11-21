@@ -1,1 +1,1 @@
-bot: python3.9 telebot.py
+bot: python3 telebot.py
