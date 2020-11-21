@@ -42,6 +42,7 @@ async def play(event):
 
 def getword(letter, used_lis):
     file = open('city.txt')
+    await event.respond('sucsess')
     for line in file:
         print('before first if')
         if line[0] == letter:
