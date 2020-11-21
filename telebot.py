@@ -34,7 +34,7 @@ async def start(event):
                     await event.respond(getword(let))
             else:
                 await event.respond('Насколько я знаю, такого населённого пункта не существует в России. Попробуй еще раз😉')
-
+                raise events.StopPropagation
 
 def getword(letter):
     for line in file:
