@@ -23,21 +23,21 @@ async def start(event):
 
 @bot.on(events.NewMessage(pattern='/play'))
 async def play(event):
-        await event.respond('Начнём! Ты первый😋')
-        @bot.on(events.NewMessage)
-        async def game(event):
-            lis = list()
-            message = event.raw_text
-            with open('city.txt') as same_file:
-                text = same_file.read()
-                if text.count(message) > 0:
-                    if lis.count(message) == 0:
-                        let = message[len(message)-1]
-                        answer = getword(let, lis)
-                        await event.respond(answer)
-                else:
-                    await event.respond('Насколько я знаю, такого населённого пункта не существует в России. Попробуй еще раз😉')
-                    raise events.StopPropagation
+    await event.respond('Начнём! Ты первый😋')
+    @bot.on(events.NewMessage)
+    async def game(event):
+        lis = list()
+        message = event.raw_text
+        with open('city.txt') as same_file:
+            text = same_file.read()
+            if text.count(message) > 0:
+                if lis.count(message) == 0:
+                    let = message[len(message)-1]
+                    answer = getword(let, lis)
+                    await event.respond(answer)
+            else:
+                await event.respond('Насколько я знаю, такого населённого пункта не существует в России. Попробуй еще раз😉')
+                raise events.StopPropagation
     raise events.StopPropagation
 
 
