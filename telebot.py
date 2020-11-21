@@ -34,7 +34,8 @@ async def play(event):
                     if lis.count(message) == 0:
                         await event.respond('hi')
                         let = message[len(message)-1]
-                        await event.respond(getword(let, lis))
+                        answer = getword(let, lis)
+                        await event.respond(answer)
                 else:
                     await event.respond('Насколько я знаю, такого населённого пункта не существует в России. Попробуй еще раз😉')
                     raise events.StopPropagation
