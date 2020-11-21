@@ -11,7 +11,7 @@ API_HASH = os.getenv('API_HASH')
 
 
 bot = TelegramClient('bot', API_ID, API_HASH).start(bot_token=BOT_TOKEN)
-file = open('city.txt')
+
 
 
 @bot.on(events.NewMessage(pattern='/start'))
@@ -26,7 +26,7 @@ async def play(event):
         await event.respond('Начнём! Ты первый😋')
         @bot.on(events.NewMessage)
         async def game(event):
-            lis = list()
+            used_words = open('used_words.txt', 'w')
             message = event.raw_text
             with open('city.txt') as same_file:
                 text = same_file.read()
@@ -41,6 +41,7 @@ async def play(event):
                     raise events.StopPropagation
 
 def getword(letter, used_lis):
+    file = open('city.txt')
     for line in file:
         print('before first if')
         if line[0] == letter:
@@ -49,6 +50,7 @@ def getword(letter, used_lis):
                 print('passed second if')
                 return line
                 break
+    file.close()
 
 
 def main():
