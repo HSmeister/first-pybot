@@ -29,7 +29,8 @@ async def play(event):
         async def game(event):
             message = event.raw_text
             with open('city.txt') as same_file:
-                if message in same_file:
+                text = same_file.read()
+                if text.count(message) > 0:
                     await event.respond('hi')
                     if message not in lis:
                         let = message[len(message)-1]
