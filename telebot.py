@@ -26,7 +26,7 @@ async def play(event):
         await event.respond('Начнём! Ты первый😋')
         @bot.on(events.NewMessage)
         async def game(event):
-            used_words = open('used_words.txt', 'w')
+            lis = list()
             message = event.raw_text
             with open('city.txt') as same_file:
                 text = same_file.read()
