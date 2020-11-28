@@ -15,12 +15,17 @@ bot = TelegramClient('bot', API_ID, API_HASH).start(bot_token=BOT_TOKEN)
 @bot.on(events.NewMessage(pattern='/start'))
 async def start(event):
     """Send a message when the command /start is issued."""
-    await event.respond('Привет! Я знаю наизусть все населённые пункты России. Введи /play, чтобы сыграть со мной в города😏')
+    await event.respond('''Привет! Я знаю наизусть все населённые пункты России.
+Введи /newgame, чтобы сыграть со мной в города😏
+И не жульничай! Я еще не умею проверять первую букву твоего города.🤕''')
     raise events.StopPropagation
 
 
-@bot.on(events.NewMessage(pattern='/play'))
+@bot.on(events.NewMessage(pattern='/newgame'))
 async def play(event):
+    with open(f'{event.sender_id}.txt', 'w') as file:
+        file.seek(0)
+    await event.respond('Список названных городов обновлён.')
     await event.respond('Начнём! Ты первый😋')
     raise events.StopPropagation
 
@@ -41,9 +46,11 @@ async def game(event):
                     storage.write(answer + '\n')
                     await event.respond(answer)
                 else:
-                    await event.respond('Такое слово мы уже называли. Давай новое!😁')
+                    await event.respond('''Такое слово мы уже называли.
+Давай новое!😁''')
             else:
-                await event.respond('Насколько я знаю, такого населённого пункта не существует в России. Попробуй еще раз😉')
+                await event.respond('''Насколько я знаю, такого населённого пункта не существует в России.
+Попробуй еще раз😉''')
                 raise events.StopPropagation
 
 
